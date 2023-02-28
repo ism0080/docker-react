@@ -14,10 +14,10 @@ jobs:
       - run: docker run -e CI=true ism0080/react-test npm test
 
       - name: Generate deployment package
-        run: zip -r deploy.zip . -x '*.git'
+        run: zip -r deploy.zip . -x '*.git*'
 
       - name: deploy to EB
-        uses: einaregilsson/beanstalk-deploy@v18
+        uses: einaregilsson/beanstalk-deploy@v21
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
